@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício 23</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        input[type="submit"] {
+            background-color: #c1b1cf;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #a88dc6;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="x">Digite o primeiro número:</label>
+        <input type="number" id="x" name="x"><br><br>
+        <label for="y">Digite o segundo número:</label>
+        <input type="number" id="y" name="y"><br><br>
+        <input type="submit" value="Calcular" onclick="calcular()">
+    </form>
+
+    <script>
+        function calcular() {
+            var x = parseInt(document.getElementById("x").value);
+            var y = parseInt(document.getElementById("y").value);
+            var somaImpares = 0;
+            var inicio, fim;
+
+            if (x < y) {
+                inicio = x;
+                fim = y;
+            } else {
+                inicio = y;
+                fim = x;
+            }
+
+            for (var i = inicio; i <= fim; i++) {
+                if (i % 2 !== 0) {
+                    somaImpares += i;
+                }
+            }
+
+            alert("SOMA DOS ÍMPARES = " + somaImpares);
+        }
+    </script>
+</body>
+</html>

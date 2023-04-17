@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<title>Calculadora de plano telefônico</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+		}
+		input, button {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			border-radius: 10px;
+			padding: 5px 10px;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculadora de plano telefônico</h1>
+	<form>
+		<label for="minutos">Digite a quantidade de minutos:</label>
+		<input type="number" id="minutos" required><br>
+		<button type="button" onclick="calcular()">Calcular</button>
+	</form>
+	<p id="resultado"></p>
+	<script>
+		function calcular() {
+			// ler o valor do campo de entrada
+			let minutos = Number(document.getElementById("minutos").value);
+			let valor;
+			// calcular o valor a ser pago de acordo com a tabela de preços
+			if (minutos <= 100) {
+				valor = 50.00;
+			} else {
+				valor = 50.00 + (minutos - 100) * 2.00;
+			}
+			// mostrar o resultado no parágrafo com o id "resultado"
+			document.getElementById("resultado").innerHTML = "Valor a pagar: R$ " + valor.toFixed(2).replace(".", ",");
+		}
+		// adicionar um ouvinte de evento que responde à tecla "Enter" pressionada no formulário
+		document.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				document.querySelector("button").click();
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Múltiplos</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		input[type="number"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+		}
+		button {
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Múltiplos</h1>
+	<p>Digite dois números inteiros:</p>
+	<input type="number" id="num1" min="0">
+	<input type="number" id="num2" min="0">
+	<button id="btnVerificar">Verificar Múltiplos</button>
+	<p id="resultado"></p>
+
+	<script>
+		const btnVerificar = document.getElementById("btnVerificar");
+		btnVerificar.addEventListener("click", verificarMultiplos);
+		document.addEventListener("keypress", function(event) {
+			if (event.key === "Enter") {
+				verificarMultiplos();
+			}
+		});
+
+		function verificarMultiplos() {
+			const num1 = parseInt(document.getElementById("num1").value);
+			const num2 = parseInt(document.getElementById("num2").value);
+			if (num1 % num2 === 0 || num2 % num1 === 0) {
+				document.getElementById("resultado").textContent = "São múltiplos.";
+			} else {
+				document.getElementById("resultado").textContent = "Não são múltiplos.";
+			}
+		}
+	</script>
+</body>
+</html>

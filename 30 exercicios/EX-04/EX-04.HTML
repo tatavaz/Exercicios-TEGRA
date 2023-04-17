@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Calculadora de Troco</title>
+    <style>
+      body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+      }
+      #container {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      .container {
+        max-width: 500px; 
+        margin: 0 auto; 
+        padding: 10px; 
+     }
+
+
+/* css */
+  h1 {
+    color: #77dd77;
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  input[type="number"] {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  input[type="submit"],
+  button {
+    background-color: #77dd77;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  input[type="submit"]:hover,
+  button:hover {
+    background-color: #6bbf6b;
+  }
+  #resultado {
+    margin-top: 20px;
+  }
+  #resultado label {
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div id="container">
+    <h1>Calculadora de Troco</h1>
+    <form onsubmit="calcularTroco(); return false;">
+      <label for="preco">Preço unitário do produto:</label>
+      <input type="number" id="preco" step="0.01" min="0" required>
+      <label for="quantidade">Quantidade comprada:</label>
+      <input type="number" id="quantidade" min="1" required>
+      <label for="dinheiro">Dinheiro recebido:</label>
+      <input type="number" id="dinheiro" step="0.01" min="0" required>
+      <input type="submit" value="Calcular troco">
+    </form>
+  </div>  
+   <div id="resultado"></div>
+    <div class="container">
+      <button onclick="location.reload()">Novo Cálculo</button>
+    </div>
+  <script>
+    function calcularTroco() {
+      let preco = parseFloat(document.getElementById('preco').value.replace(',', '.'));
+      let quantidade = parseInt(document.getElementById('quantidade').value);
+      let dinheiro = parseFloat(document.getElementById('dinheiro').value.replace(',', '.'));
+      let troco = dinheiro - (preco * quantidade);
+      let resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = '<label>TROCO:</label> R$ ' + troco.toFixed(2).replace('.', ',');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculadora de Troco</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		input, button {
+			font-family: inherit;
+			border-radius: 10px;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculadora de Troco</h1>
+	<label>Preço unitário do produto:</label>
+	<input type="number" id="preco">
+	<br><br>
+	<label>Quantidade comprada:</label>
+	<input type="number" id="quantidade">
+	<br><br>
+	<label>Dinheiro recebido:</label>
+	<input type="number" id="dinheiro">
+	<br><br>
+	<button onclick="calcularTroco()">Calcular troco</button>
+	<br><br>
+	<p id="resultado"></p>
+
+	<script>
+		function calcularTroco() {
+			// Ler os valores dos inputs
+			var preco = Number(document.getElementById("preco").value);
+			var quantidade = Number(document.getElementById("quantidade").value);
+			var dinheiro = Number(document.getElementById("dinheiro").value);
+
+			// Calcular o total a pagar
+			var total = preco * quantidade;
+
+			// Calcular o troco
+			var troco = dinheiro - total;
+
+			// Verificar se o dinheiro é suficiente
+			if (troco >= 0) {
+				// Mostrar o valor do troco
+				document.getElementById("resultado").innerHTML = "TROCO = R$ " + troco.toFixed(2);
+			} else {
+				// Calcular o valor restante
+				var restante = total - dinheiro;
+				// Mostrar a mensagem de dinheiro insuficiente
+				document.getElementById("resultado").innerHTML = "DINHEIRO INSUFICIENTE. FALTAM R$ " + restante.toFixed(2) + " REAIS";
+			}
+		}
+	</script>
+</body>
+</html>

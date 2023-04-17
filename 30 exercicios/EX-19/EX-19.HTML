@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exemplo</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #F2F2F2;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 24px;
+			font-weight: bold;
+			margin-top: 20px;
+		}
+
+		label {
+			display: block;
+			margin-top: 20px;
+		}
+
+		input[type="number"] {
+			padding: 5px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 3px #ccc;
+			width: 200px;
+			margin-top: 5px;
+		}
+
+		button {
+			padding: 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: #C1D6E7;
+			color: #fff;
+			cursor: pointer;
+			margin-top: 20px;
+			box-shadow: 0 0 3px #ccc;
+		}
+
+		button:hover {
+			background-color: #8FB5C4;
+		}
+
+		.resultado {
+			margin-top: 30px;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>Aumento de Salário</h1>
+
+	<label for="salario">Digite o salário da pessoa:</label>
+	<input type="number" id="salario">
+
+	<button id="calcular">Calcular</button>
+
+	<div class="resultado">
+		<p>Novo salário: R$ <span id="novoSalario"></span></p>
+		<p>Aumento: R$ <span id="aumento"></span></p>
+		<p>Porcentagem: <span id="porcentagem"></span> %</p>
+	</div>
+
+	<script>
+		document.getElementById("calcular").addEventListener("click", function() {
+			var salario = document.getElementById("salario").value;
+			var novoSalario, aumento, porcentagem;
+
+			if (salario <= 999) {
+				porcentagem = 20;
+			} else if (salario <= 2999) {
+				porcentagem = 15;
+			} else if (salario <= 7999) {
+				porcentagem = 10;
+			} else {
+				porcentagem = 5;
+			}
+
+			aumento = salario * porcentagem / 100;
+			novoSalario = parseFloat(salario) + parseFloat(aumento);
+
+			document.getElementById("novoSalario").innerHTML = novoSalario.toFixed(2);
+			document.getElementById("aumento").innerHTML = aumento.toFixed(2);
+			document.getElementById("porcentagem").innerHTML = porcentagem;
+		});
+
+		document.getElementById("salario").addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				document.getElementById("calcular").click();
+			}
+		});
+	</script>
+</body>
+</html>

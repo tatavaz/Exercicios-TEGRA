@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+	<title>Exercício 21</title>
+	<style>
+		body {
+			background-color: #f4e7e7;
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+		h1 {
+			color: #f38181;
+			font-size: 28px;
+		}
+		input {
+			border-radius: 10px;
+			border: none;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		button {
+			background-color: #f7d4d4;
+			border-radius: 10px;
+			border: none;
+			padding: 10px;
+			cursor: pointer;
+		}
+		button:focus {
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Exercício 21</h1>
+	<label for="numeroX">Digite o valor de X:</label>
+	<input type="number" id="numeroX" placeholder="Digite um número">
+	<br>
+	<button type="button" onclick="mostrarPares()">Mostrar pares</button>
+	<div id="resultado"></div>
+
+	<script>
+		function mostrarPares() {
+			let numeroX = document.getElementById("numeroX").value;
+			let resultado = "";
+			for (let i = 2; i <= numeroX; i += 2) {
+				resultado += i + "<br>";
+			}
+			document.getElementById("resultado").innerHTML = resultado;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tabuada</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4e4e4;
+		}
+		h1 {
+			text-align: center;
+			font-size: 24px;
+			color: #a64b6a;
+			margin-top: 50px;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 30px;
+		}
+		input[type=number] {
+			padding: 10px;
+			margin-bottom: 20px;
+			border: none;
+			border-radius: 10px;
+			background-color: #f9d3d3;
+			font-size: 18px;
+			color: #a64b6a;
+		}
+		button {
+			padding: 10px;
+			border: none;
+			border-radius: 10px;
+			background-color: #f9d3d3;
+			font-size: 18px;
+			color: #a64b6a;
+			cursor: pointer;
+			transition: background-color 0.2s ease-in-out;
+		}
+		button:hover {
+			background-color: #f2b2c2;
+		}
+		.tabuada {
+			margin-top: 30px;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		.tabuada div {
+			padding: 10px 20px;
+			border-radius: 10px;
+			background-color: #f9d3d3;
+			margin: 5px;
+			font-size: 18px;
+			color: #a64b6a;
+		}
+	</style>
+</head>
+<body>
+	<h1>Tabuada</h1>
+	<form onsubmit="exibirTabuada(event)">
+		<label for="valor">Deseja a tabuada para qual valor?</label>
+		<input type="number" id="valor" required>
+		<button type="submit">Exibir</button>
+	</form>
+	<div class="tabuada" id="tabuada"></div>
+	<script>
+		function exibirTabuada(event) {
+			event.preventDefault();
+			let valor = document.getElementById('valor').value;
+			let tabuada = document.getElementById('tabuada');
+			tabuada.innerHTML = '';
+			for (let i = 1; i <= 10; i++) {
+				let resultado = valor * i;
+				let div = document.createElement('div');
+				div.innerText = valor + ' x ' + i + ' = ' + resultado;
+				tabuada.appendChild(div);
+			}
+		}
+	</script>
+</body>
+</html>

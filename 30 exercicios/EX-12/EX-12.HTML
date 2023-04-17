@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Equação do segundo grau</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+		}
+		input, button {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			border-radius: 10px;
+			padding: 5px 10px;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Equação do segundo grau</h1>
+	<form>
+		<label for="coeficiente_a">Coeficiente a:</label>
+		<input type="number" id="coeficiente_a" required><br>
+		<label for="coeficiente_b">Coeficiente b:</label>
+		<input type="number" id="coeficiente_b" required><br>
+		<label for="coeficiente_c">Coeficiente c:</label>
+		<input type="number" id="coeficiente_c" required><br>
+		<button type="button" onclick="calcular()">Calcular</button>
+	</form>
+	<p id="resultado"></p>
+	<script>
+		function calcular() {
+			let a = Number(document.getElementById("coeficiente_a").value);
+			let b = Number(document.getElementById("coeficiente_b").value);
+			let c = Number(document.getElementById("coeficiente_c").value);
+			let delta = b * b - 4 * a * c;
+			if (delta < 0) {
+				document.getElementById("resultado").innerHTML = "Esta equação não possui raízes reais";
+			} else {
+				let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+				let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+				document.getElementById("resultado").innerHTML = "X1 = " + x1.toFixed(4) + "<br>X2 = " + x2.toFixed(4);
+			}
+		}
+		document.addEventListener("keydown", function(event) {
+			if (event.key === "Enter") {
+				event.preventDefault();
+				document.querySelector("button").click();
+			}
+		});
+	</script>
+</body>
+</html>

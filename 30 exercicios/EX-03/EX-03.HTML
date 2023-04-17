@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cálculo da Idade Média</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      color: salmon;
+      text-align: center;
+    }
+
+    table {
+      background-color: white;
+      border-collapse: collapse;
+      border: 2px solid salmon;
+      margin: auto;
+    }
+
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    input[type="text"] {
+      border: none;
+      border-bottom: 2px solid salmon;
+      background-color: #f2f2f2;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    input[type="number"] {
+      border: none;
+      border-bottom: 2px solid salmon;
+      background-color: #f2f2f2;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: salmon;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Cálculo da Idade Média</h1>
+
+  <table>
+    <tr>
+      <td>
+        <label for="nome1">Nome 1:</label>
+        <br>
+        <input type="text" id="nome1" name="nome1">
+      </td>
+      <td>
+        <label for="idade1">Idade 1:</label>
+        <br>
+        <input type="number" id="idade1" name="idade1">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="nome2">Nome 2:</label>
+        <br>
+        <input type="text" id="nome2" name="nome2">
+      </td>
+      <td>
+        <label for="idade2">Idade 2:</label>
+        <br>
+        <input type="number" id="idade2" name="idade2">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button onclick="calcularIdadeMedia()">Calcular Idade Média</button>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <div id="resultado" style="text-align: center;"></div>
+
+  <script>
+    function calcularIdadeMedia() {
+      const nome1 = document.getElementById("nome1").value;
+      const idade1 = parseFloat(document.getElementById("idade1").value);
+      const nome2 = document.getElementById("nome2").value;
+      const idade2 = parseFloat(document.getElementById("idade2").value);
+
+      const idadeMedia = (idade1 + idade2) / 2;
+
+      const mensagem = `A idade média de ${nome1} e ${nome2} é de ${idadeMedia.toFixed(1)} anos`;
+
+      document.getElementById("resultado").innerHTML = mensagem;
+    }
+  </script>
+
+</body>
+
+</html>

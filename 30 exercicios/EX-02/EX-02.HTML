@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cálculo de Retângulo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #FADBD8;
+    }
+
+    h1 {
+      color: #C0392B;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #C0392B;
+      color: white;
+    }
+
+    #calcular {
+      background-color: #C0392B;
+      color: white;
+      border-radius: 30px;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+
+    #calcular:hover {
+      background-color: #E74C3C;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Cálculo de Retângulo</h1>
+  <table>
+    <tr>
+      <th>Base:</th>
+      <td><input type="number" id="base"></td>
+    </tr>
+    <tr>
+      <th>Altura:</th>
+      <td><input type="number" id="altura"></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td><button id="calcular" onclick="calcular()">Calcular</button></td>
+    </tr>
+    <tr>
+      <th>Área:</th>
+      <td><span id="resultado-area"></span></td>
+    </tr>
+    <tr>
+      <th>Perímetro:</th>
+      <td><span id="resultado-perimetro"></span></td>
+    </tr>
+    <tr>
+      <th>Diagonal:</th>
+      <td><span id="resultado-diagonal"></span></td>
+    </tr>
+  </table>
+
+  <script>
+    function calcular() {
+      //ler os valores da base e altura do retângulo
+      var base = parseFloat(document.getElementById("base").value);
+      var altura = parseFloat(document.getElementById("altura").value);
+
+      //calcular a área, perímetro e diagonal do retângulo
+      var area = (base * altura).toFixed(4);
+      var perimetro = ((base + altura) * 2).toFixed(4);
+      var diagonal = Math.sqrt(base ** 2 + altura ** 2).toFixed(4);
+
+      //exibir os resultados na tela
+      document.getElementById("resultado-area").innerHTML = "ÁREA = " + area;
+      document.getElementById("resultado-perimetro").innerHTML = "PERÍMETRO = " + perimetro;
+      document.getElementById("resultado-diagonal").innerHTML = "DIAGONAL = " + diagonal;
+    }
+  </script>
+</body>
+
+</html>

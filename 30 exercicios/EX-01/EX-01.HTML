@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculo de preço de terreno</title>
+  </head>
+  <body>
+    <h1>Calculo de preço de terreno</h1>
+    <label for="largura">Largura do terreno (m): </label>
+    <input type="number" id="largura" step="0.1"><br><br>
+    <label for="comprimento">Comprimento do terreno (m): </label>
+    <input type="number" id="comprimento" step="0.1"><br><br>
+    <label for="valor">Valor do metro quadrado (R$): </label>
+    <input type="number" id="valor" step="0.01"><br><br>
+    <button onclick="calcular()">Calcular</button><br><br>
+    <p>Área do terreno: <span id="area"></span></p>
+    <p>Preço do terreno: <span id="preco"></span></p>
+    <script>
+      function calcular() {
+        var largura = parseFloat(document.getElementById("largura").value);
+        var comprimento = parseFloat(document.getElementById("comprimento").value);
+        var valor = parseFloat(document.getElementById("valor").value);
+        var area = largura * comprimento;
+        var preco = area * valor;
+        document.getElementById("area").innerHTML = area.toFixed(2);
+        document.getElementById("preco").innerHTML = preco.toFixed(2);
+      }
+    </script>
+  </body>
+</html>

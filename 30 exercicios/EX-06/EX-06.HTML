@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pagamento de Funcionário</title>
+    <style>
+      body {
+        background-color: #fff;
+        font-family: Verdana, sans-serif;
+        color: #d98c5e;
+      }
+      h1 {
+        color: #c2674d;
+        text-align: center;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: #f5d5cb;
+        padding: 20px;
+        border-radius: 10px;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"], input[type="number"] {
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      input[type="submit"] {
+        background-color: #d98c5e;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      input[type="submit"]:hover {
+        background-color: #c2674d;
+      }
+      #resultado {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pagamento de Funcionário</h1>
+    <form onsubmit="calcularPagamento(); return false;">
+      <label for="nome">Nome do funcionário:</label>
+      <input type="text" id="nome" required>
+      <label for="valor-hora">Valor por hora:</label>
+      <input type="number" id="valor-hora" step="0.01" min="0" required>
+      <label for="horas-trabalhadas">Horas trabalhadas:</label>
+      <input type="number" id="horas-trabalhadas" min="1" required>
+      <input type="submit" value="Calcular pagamento">
+    </form>
+    <div id="resultado"></div>
+    <script>
+      function calcularPagamento() {
+        let nome = document.getElementById('nome').value;
+        let valorHora = parseFloat(document.getElementById('valor-hora').value.replace(',', '.'));
+        let horasTrabalhadas = parseInt(document.getElementById('horas-trabalhadas').value);
+        let pagamento = valorHora * horasTrabalhadas;
+        let resultadoDiv = document.getElementById('resultado');
+        resultadoDiv.innerHTML = `O pagamento para ${nome} deve ser ${pagamento.toFixed(2)}`;
+      }
+    </script>
+  </body>
+</html>

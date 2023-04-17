@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Área de figuras geométricas</title>
+	<meta charset="utf-8">
+	<style>
+		body {
+			background-color: #fde2e4;
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+		h1 {
+			color: #ff6b6b;
+		}
+		button {
+			background-color: #f6b9c0;
+			border-radius: 10px;
+			border: none;
+			color: white;
+			font-size: 18px;
+			margin-top: 20px;
+			padding: 10px 20px;
+			cursor: pointer;
+		}
+		input {
+			border-radius: 5px;
+			border: none;
+			height: 30px;
+			margin: 10px;
+			padding: 5px;
+			width: 200px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Área de figuras geométricas</h1>
+	<input type="number" id="medidaA" placeholder="Medida A"><br>
+	<input type="number" id="medidaB" placeholder="Medida B"><br>
+	<input type="number" id="medidaC" placeholder="Medida C"><br>
+	<button onclick="calcular()">Calcular</button><br>
+	<p id="areaQuadrado"></p>
+	<p id="areaTriangulo"></p>
+	<p id="areaTrapezio"></p>
+	<script>
+		function calcular() {
+			var medidaA = document.getElementById("medidaA").value;
+			var medidaB = document.getElementById("medidaB").value;
+			var medidaC = document.getElementById("medidaC").value;
+
+			var areaQuadrado = medidaA * medidaA;
+			var areaTriangulo = (medidaA * medidaB) / 2;
+			var areaTrapezio = ((medidaA + medidaB) * medidaC) / 2;
+
+			document.getElementById("areaQuadrado").innerHTML = "ÁREA DO QUADRADO = " + areaQuadrado.toFixed(4);
+			document.getElementById("areaTriangulo").innerHTML = "ÁREA DO TRIÂNGULO = " + areaTriangulo.toFixed(4);
+			document.getElementById("areaTrapezio").innerHTML = "ÁREA DO TRAPÉZIO = " + areaTrapezio.toFixed(4);
+		}
+	</script>
+</body>
+</html>

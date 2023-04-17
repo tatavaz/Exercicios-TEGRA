@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Validar CNPJ</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		h1 {
+			font-size: 36px;
+			color: #1e90ff;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			text-align: center;
+		}
+
+		label {
+			font-size: 24px;
+			color: #333;
+			margin-right: 10px;
+		}
+
+		input[type="text"] {
+			font-size: 24px;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+			margin-right: 20px;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			font-size: 24px;
+			padding: 10px 20px;
+			background-color: #1e90ff;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #00bfff;
+		}
+
+		.resultado {
+			font-size: 24px;
+			color: #333;
+			margin-top: 20px;
+		}
+
+		.resultado-valido {
+			color: green;
+			font-weight: bold;
+		}
+
+		.resultado-invalido {
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<h1>Validar CNPJ</h1>
+	<form>
+		<label for="cnpj">CNPJ:</label>
+		<input type="text" id="cnpj" name="cnpj" maxlength="18">
+		<input type="submit" value="Validar">
+	</form>
+
+	<div class="resultado" id="resultado"></div>
+
+	<script>
+		function validarCnpj(cnpj) {
+			cnpj = cnpj.replace(/[^\d]+/g, '');
+
+			if (cnpj == '') return false;
+
+			if (cnpj.length != 14) return false;
+
+			// Elimina CNPJs invalidos conhecidos
+			if (cnpj == '00000000000000' || 
+				cnpj == '11111111111111' || 
+				cnpj == '22222222222222' || 
+				cnpj == '33333333333333' || 
+				cnpj == '44444444444444' || 
+				cnpj == '55555555555555' || 
+				cnpj == '66666666666666' || 
+				cnpj == '77777777777777' || 
+				cnpj == '88888888888888' || 
+				cnpj == '99999999999999')
+				return false;
+
+			// Valida DVs
+			tamanho = cnpj.length - 2
+			numeros = cnpj.substring(0,tamanho);
+			digitos = cnpj.substring(tamanho);
+			soma = 0;
+            pos = tamanho - 7;
+		for (i = tamanho; i >= 1; i--) {
+			soma += numeros.charAt(tamanho - i) * pos--;
+			if (pos < 2) pos = 9;
+		}
+
+		resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
+		if (resultado != digitos.charAt(0)) return false;
+
+		tamanho = tamanho + 1;
+		numeros = cnpj.substring(0,tamanho);
+		soma = 0;
+		pos = tamanho - 7;
+		for (i = tamanho; i >= 1; i--) {
+			soma += numeros.charAt(tamanho - i) * pos--;
+			if (pos < 2) pos = 9;
+		}
+
+		resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
+		if (resultado != digitos.charAt(1)) return false;
+
+		return true;
+	}
+
+	const form = document.querySelector('form');
+	form.addEventListener('submit', event => {
+		event.preventDefault();
+
+		const cnpjInput = document.querySelector('#cnpj');
+		const cnpj = cnpjInput.value;
+
+		const resultadoDiv = document.querySelector('#resultado');
+		resultadoDiv.innerHTML = '';
+
+		if (validarCnpj(cnpj)) {
+			resultadoDiv.classList.add('resultado-valido');
+			resultadoDiv.innerHTML = 'Válido.';
+		} else {
+			resultadoDiv.classList.add('resultado-invalido');
+			resultadoDiv.innerHTML = 'Inválido.';
+		}
+	});
+</script>
+</body>
+</html>

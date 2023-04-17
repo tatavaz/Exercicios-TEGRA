@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Classificação de Glicose</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		button {
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+		input[type="number"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Classificação de Glicose</h1>
+	<p>Insira a medida da glicose:</p>
+	<input type="number" id="glicose" min="0" step="0.1">
+	<button id="btnClassificar">Classificar</button>
+	<p id="classificacao"></p>
+	
+	<script>
+		const btnClassificar = document.getElementById("btnClassificar");
+		btnClassificar.addEventListener("click", classificarGlicose);
+		
+		const inputGlicose = document.getElementById("glicose");
+		inputGlicose.addEventListener("keyup", function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				classificarGlicose();
+			}
+		});
+		
+		function classificarGlicose() {
+			const glicose = parseFloat(inputGlicose.value);
+			let classificacao = "";
+			if (glicose <= 100) {
+				classificacao = "Normal";
+			} else if (glicose <= 140) {
+				classificacao = "Elevado";
+			} else {
+				classificacao = "Diabetes";
+			}
+			document.getElementById("classificacao").textContent = "Classificação: " + classificacao;
+		}
+	</script>
+</body>
+</html>

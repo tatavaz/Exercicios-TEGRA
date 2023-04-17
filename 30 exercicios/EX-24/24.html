@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Exercício 5</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		form {
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 30px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			background-color: #fff;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+			width: 400px;
+		}
+		input[type="number"] {
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+		}
+		button {
+			padding: 10px 20px;
+			margin: 10px;
+			border-radius: 5px;
+			border: none;
+			background-color: #70c1b3;
+			color: #fff;
+			font-weight: bold;
+			box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+			cursor: pointer;
+		}
+		button:focus {
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Exercício 5</h1>
+	<form>
+		<label for="numero1">Digite o 1º número:</label>
+		<input type="number" id="numero1">
+		<label for="numero2">Digite o 2º número:</label>
+		<input type="number" id="numero2">
+		<label for="numero3">Digite o 3º número:</label>
+		<input type="number" id="numero3">
+		<label for="numero4">Digite o 4º número:</label>
+		<input type="number" id="numero4">
+		<label for="numero5">Digite o 5º número:</label>
+		<input type="number" id="numero5">
+		<button type="button" onclick="ordenarNumeros()">Ordenar</button>
+	</form>
+	<script>
+		function ordenarNumeros() {
+			let numero1 = parseInt(document.getElementById('numero1').value);
+			let numero2 = parseInt(document.getElementById('numero2').value);
+			let numero3 = parseInt(document.getElementById('numero3').value);
+			let numero4 = parseInt(document.getElementById('numero4').value);
+			let numero5 = parseInt(document.getElementById('numero5').value);
+
+			let numeros = [numero1, numero2, numero3, numero4, numero5];
+
+			numeros.sort((a, b) => a - b);
+
+			alert('Números ordenados: ' + numeros.join(', '));
+		}
+
+		document.addEventListener("keydown", function(event) {
+    		if (event.key === 'Enter') {
+        		event.preventDefault();
+        		ordenarNumeros();
+    		}
+		});
+	</script>
+</body>
+</html>

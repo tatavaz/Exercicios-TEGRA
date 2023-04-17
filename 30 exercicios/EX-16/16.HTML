@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arremesso de Dardo</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		input[type="number"] {
+			padding: 10px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+		}
+		button {
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>Arremesso de Dardo</h1>
+	<p>Insira as três distâncias:</p>
+	<input type="number" id="distancia1" min="0" step="0.01">
+	<input type="number" id="distancia2" min="0" step="0.01">
+	<input type="number" id="distancia3" min="0" step="0.01">
+	<button id="btnMaior">Calcular Maior Distância</button>
+	<p id="resultado"></p>
+
+	<script>
+		const btnMaior = document.getElementById("btnMaior");
+		btnMaior.addEventListener("click", function() {
+			const distancia1 = parseFloat(document.getElementById("distancia1").value);
+			const distancia2 = parseFloat(document.getElementById("distancia2").value);
+			const distancia3 = parseFloat(document.getElementById("distancia3").value);
+			const maior = Math.max(distancia1, distancia2, distancia3);
+			document.getElementById("resultado").textContent = "MAIOR DISTÂNCIA = " + maior.toFixed(2);
+		});
+	</script>
+</body>
+</html>

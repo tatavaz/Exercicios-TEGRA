@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Área do Círculo</title>
+    <style>
+      body {
+        background-color: #f0f8ff;
+        font-family: Arial, sans-serif;
+        border-radius: 10px;
+        padding: 20px;
+      }
+      h1 {
+        color: #87cefa;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #1e90ff;
+      }
+      input[type="number"] {
+        border-radius: 5px;
+        border: 1px solid #87cefa;
+        padding: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+      }
+      input[type="submit"] {
+        background-color: #87cefa;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-family: "Arial Rounded MT Bold", sans-serif;
+      }
+      input[type="submit"]:hover {
+        background-color: #1e90ff;
+      }
+      #resultado {
+        margin-top: 20px;
+        color: #1e90ff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="background-color: #fff; padding: 20px; border-radius: 10px;">
+      <h1>Área do Círculo</h1>
+      <form onsubmit="calcularArea(); return false;">
+        <label for="raio">Digite o valor do raio do círculo:</label>
+        <input type="number" id="raio" step="0.01" min="0" required>
+        <input type="submit" value="Calcular área">
+      </form>
+      <div id="resultado"></div>
+    </div>
+    <script>
+      function calcularArea() {
+        let raio = parseFloat(document.getElementById('raio').value.replace(',', '.'));
+        let area = 3.14159 * Math.pow(raio, 2);
+        let resultadoDiv = document.getElementById('resultado');
+        resultadoDiv.innerHTML = 'ÁREA = ' + area.toFixed(3);
+      }
+    </script>
+  </body>
+</html>

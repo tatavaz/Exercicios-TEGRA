@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Conversão de Temperatura</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+		}
+    h1 {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+
+	label {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	input {
+		padding: 5px;
+		border-radius: 5px;
+		border: 1px solid #ccc;
+		margin-bottom: 10px;
+	}
+
+	button {
+		background-color: #4CAF50;
+		color: white;
+		padding: 10px 20px;
+		border-radius: 5px;
+		border: none;
+		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: #3e8e41;
+	}
+
+	.result {
+		font-weight: bold;
+		margin-top: 20px;
+	}
+</style>
+</head>
+<body>
+	<h1>Conversão de Temperatura</h1>
+  <label for="escala">Você vai digitar a temperatura em qual escala (C/F)?</label>
+  <select id="escala">
+    <option value="C">Celsius</option>
+    <option value="F">Fahrenheit</option>
+  </select>
+  
+  <label for="temp">Digite a temperatura:</label>
+  <input type="number" id="temp" step="0.01">
+  
+  <button onclick="converter()">Converter</button>
+  
+  <div class="result" id="resultado"></div>
+  
+  <script>
+    function converter() {
+      var escala = document.getElementById("escala").value;
+      var temp = parseFloat(document.getElementById("temp").value);
+  
+      if (escala == "C") {
+        var tempF = (temp * 1.8) + 32;
+        document.getElementById("resultado").innerHTML = "Temperatura equivalente em Fahrenheit: " + tempF.toFixed(2);
+      } else if (escala == "F") {
+        var tempC = (temp - 32) / 1.8;
+        document.getElementById("resultado").innerHTML = "Temperatura equivalente em Celsius: " + tempC.toFixed(2);
+      }
+    }
+  </script>
+</body>
+</html>  
